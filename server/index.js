@@ -85,7 +85,48 @@ app.get("/genre/:genre", async (req, res) => {
 
 //update book
 
+app.put("/update/:name", async (req, res) => {
+  try {
+    const { name } = req.params;
+    const { title } = req.body;
+    const updateBook = await pool.query(
+      "UPDATE library SET title = $1 Where title = $2",
+      [title, name]
+    );
+
+    res.json("book was updated");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
 //delete book
+
+app.delete("/book/:title", async (req, res) => {
+  try {
+    const { title } = req.params;
+    const deleteBook = await pool.query(
+      "DELETE FROM library WHERE title = $1",
+      [title]
+    );
+    res.json("book was removed");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+app.delete("/bookid/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const deleteBook = await pool.query(
+      "DELETE FROM library WHERE library_id = $1",
+      [id]
+    );
+    res.json("book was removed");
+  } catch (err) {
+    console.error(err.message);
+  }
+});
 
 app.listen(5000, () => {
   console.log("server has started on port 5000");
