@@ -43,11 +43,41 @@ app.get("/books", async (req, res) => {
 
 //get specific book
 
-app.get("/book/:title", async (req, res) => {
+app.get("/title/:title", async (req, res) => {
   try {
-    console.log(req.params);
-    const book = await pool.query("SELECT ");
-    res.json(book.rows);
+    const { title } = req.params;
+    const book = await pool.query("SELECT * FROM library WHERE title = $1", [
+      title,
+    ]);
+    res.json(book.rows[0]);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get all books by author
+
+app.get("/author/:author", async (req, res) => {
+  try {
+    const { author } = req.params;
+    const books = await pool.query("SELECT * FROM library WHERE author = $1", [
+      author,
+    ]);
+    res.json(books.rows);
+  } catch (err) {
+    console.error(err.message);
+  }
+});
+
+//get all books by genre
+
+app.get("/genre/:genre", async (req, res) => {
+  try {
+    const { genre } = req.params;
+    const books = await pool.query("SELECT * FROM library WHERE genre = $1", [
+      genre,
+    ]);
+    res.json(books.rows);
   } catch (err) {
     console.error(err.message);
   }
