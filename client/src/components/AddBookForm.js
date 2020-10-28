@@ -2,12 +2,14 @@ import React, { Fragment, useState } from "react";
 
 function AddBookForm(props) {
   const [title, setTitle] = useState("Title");
+  const [author, setAuthor] = useState("Author");
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
 
     try {
-      const body = { title };
+      const body = { title, author };
+
       const response = await fetch("http://localhost:5000/addbook", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -28,6 +30,12 @@ function AddBookForm(props) {
           className="form-control"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+        />
+        <input
+          type="text"
+          className="form-control"
+          value={author}
+          onChange={(e) => setAuthor(e.target.value)}
         />
         <button className="btn btn-success">Add Book</button>
       </form>
