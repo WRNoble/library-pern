@@ -2,10 +2,27 @@ import React, { Fragment, useState } from "react";
 
 function AddBookForm(props) {
   const [title, setTitle] = useState("Title");
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault();
+
+    try {
+      const body = { title };
+      const response = await fetch("http://localhost:5000/addbook", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
   return (
     <Fragment>
       <h1 className="text-center mt-5">add book</h1>
-      <form className="d-flex mt-5">
+      <form className="d-flex mt-5" onSubmit={onSubmitForm}>
         <input
           type="text"
           className="form-control"
