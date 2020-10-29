@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import BookInfo from "./BookInformation";
+import BookInformation from "./BookInformation";
 
 function Book(props) {
   return (

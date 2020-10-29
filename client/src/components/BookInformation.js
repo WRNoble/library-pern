@@ -1,36 +1,55 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, Component } from "react";
 
-function BookInformation(props) {
-  const [books, setBooks] = useState([]);
+class BookInformation extends Component {
+  constructor(props) {
+    super(props);
 
-  const getInformation = async () => {
-    try {
-      const response = await fetch("http://localhost:5000/books");
-      const jsonData = await response.json();
+    this.state = {
+      error: null,
+      isLoaded: false,
+      books: [],
+      selected: false,
+    };
+  }
 
-      setBooks(jsonData);
-    } catch (err) {
-      console.error(err.message);
-    }
-  };
+  componentDidMount() {
+    fetch("http://localhost:5000/books")
+      .then((response) => response.json())
+      .then(
+        (result) => {
+          this.setState({
+            isLoaded: true,
+            books: result,
+          });
+        },
+        (error) => {
+          this.setState({
+            isLoaded: false,
+            error,
+          });
+        }
+      );
+  }
 
-  useEffect(() => {
-    getInformation();
-  }, []);
-
-  console.log(books);
-
-  return (
-    <Fragment>
-      <div>
-        {books.map((book) => (
+  render() {
+    const books = this.state.books;
+    let error = this.state.error;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else {
+      return (
+        <Fragment>
           <div>
-            <h2>{book.title}</h2>
+            {books.map((book) => (
+              <div>
+                <h2>{book.title}</h2>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </Fragment>
-  );
+        </Fragment>
+      );
+    }
+  }
 }
 
 export default BookInformation;
