@@ -41,9 +41,17 @@ class BookInformation extends Component {
         <Fragment>
           <div>
             {books.map((book) => (
-              <div>
-                <h2>{book.title}</h2>
-              </div>
+              <>
+                <div>
+                  <h3>{book.title}</h3>
+                </div>
+                <div>
+                  <p>{book.author}</p>
+                  <p>{book.genre}</p>
+                  <p>{book.published}</p>
+                  <p>{book.description}</p>
+                </div>
+              </>
             ))}
           </div>
         </Fragment>
