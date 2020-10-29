@@ -1,17 +1,14 @@
 import React, { Fragment } from "react";
 import AddBookForm from "./components/AddBookForm";
-import Library from "./components/Library";
-import BookInformation from "./components/BookInformation";
-import "./App.css";
 import Book from "./components/Book";
+import "./App.css";
 
 function App() {
   return (
     <Fragment>
       <div className="container">
         <AddBookForm />
-        <Library />
-        <BookInformation></BookInformation>
+        <Book></Book>
       </div>
     </Fragment>
   );

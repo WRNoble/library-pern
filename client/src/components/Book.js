@@ -5,6 +5,7 @@ function Book(props) {
   return (
     <Fragment>
       <div>
+        <h1 className="text-center mt-5">LIBRARY</h1>
         <BookInformation></BookInformation>
       </div>
     </Fragment>
