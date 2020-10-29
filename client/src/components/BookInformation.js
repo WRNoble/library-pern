@@ -38,23 +38,23 @@ class BookInformation extends Component {
       return <div>Error: {error.message}</div>;
     } else {
       return (
-        <Fragment>
-          <div>
-            {books.map((book) => (
-              <>
-                <div>
-                  <h3>{book.title}</h3>
-                </div>
-                <div>
-                  <p>{book.author}</p>
-                  <p>{book.genre}</p>
-                  <p>{book.published}</p>
-                  <p>{book.description}</p>
-                </div>
-              </>
-            ))}
-          </div>
-        </Fragment>
+        <div>
+          {books.map((book, item) => (
+            <Fragment key={item}>
+              <div>
+                <h3>{book.title}</h3>
+              </div>
+              <div>
+                <p>{book.author}</p>
+                <p>{book.genre}</p>
+                <p>{book.published}</p>
+                <p>{book.description}</p>
+                <button className="ml-5 mr-5">Edit</button>
+                <button className="btn btn-danger">Delete</button>
+              </div>
+            </Fragment>
+          ))}
+        </div>
       );
     }
   }
