@@ -58,7 +58,7 @@ class BookInformation extends Component {
                 <p>{book.genre}</p>
                 <p>{book.published}</p>
                 <p>{book.description}</p>
-                <EditBook />
+                <EditBook book={book} />
                 <button
                   className="btn btn-danger"
                   // onClick={this.props.handleDelete.bind(this, item)}
