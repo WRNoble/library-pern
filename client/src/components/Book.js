@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment } from "react";
 import BookInformation from "./BookInformation";
 
 function Book(props) {

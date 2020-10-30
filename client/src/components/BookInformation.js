@@ -53,7 +53,7 @@ class BookInformation extends Component {
               <div>
                 <h3>{book.title}</h3>
               </div>
-              <div>
+              <div className="mb-5">
                 <p>{book.author}</p>
                 <p>{book.genre}</p>
                 <p>{book.published}</p>

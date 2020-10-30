@@ -7,6 +7,24 @@ function EditBook({ book }) {
   const [genre, setGenre] = useState(book.genre);
   const [published, setPublished] = useState(book.published);
   const [description, setDescription] = useState(book.description);
+
+  const updateBook = async (e) => {
+    e.preventDefault();
+    try {
+      const body = { title, author, genre, published, description };
+      const response = await fetch(
+        `http://localhost:5000/update/${book.library_id}`,
+        {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        }
+      );
+      console.log(response);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
   return (
     <Fragment>
       <button
@@ -86,6 +104,7 @@ function EditBook({ book }) {
                 type="button"
                 className="btn btn-warning"
                 data-dismiss="modal"
+                onClick={(e) => updateBook(e)}
               >
                 Edit
               </button>
