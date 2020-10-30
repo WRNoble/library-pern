@@ -1,4 +1,5 @@
 import React, { Fragment, Component } from "react";
+import EditBook from "./EditBook";
 
 class BookInformation extends Component {
   constructor(props) {
@@ -31,16 +32,15 @@ class BookInformation extends Component {
       );
   }
 
-  handleOnDelete = (item) => {
-    this.setState((state) => {
-      return {
-        books: state.books.filter((books) => books.item !== item),
-      };
-    });
-  };
+  // handleDelete = (book) => {
+  //   this.setState((state) => {
+  //     return {
+  //       books: state.books.filter((books) => books.book !== book),
+  //     };
+  //   });
+  // };
 
   render() {
-    const handleOnDelete = this.handleOnDelete();
     const books = this.state.books;
     let error = this.state.error;
     if (error) {
@@ -58,10 +58,10 @@ class BookInformation extends Component {
                 <p>{book.genre}</p>
                 <p>{book.published}</p>
                 <p>{book.description}</p>
-                <button className="ml-5 mr-5">Edit</button>
+                <EditBook />
                 <button
                   className="btn btn-danger"
-                  onClick={(e) => handleOnDelete(item)}
+                  // onClick={this.props.handleDelete.bind(this, item)}
                 >
                   Delete
                 </button>
