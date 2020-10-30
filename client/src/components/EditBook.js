@@ -1,23 +1,24 @@
 import React, { Fragment, useState } from "react";
 
-function EditBook(props) {
-  const [title, setTitle] = useState(props.title);
-  const [author, setAuthor] = useState(props.author);
-  const [genre, setGenre] = useState(props.genre);
-  const [published, setPublished] = useState(props.published);
-  const [description, setDescription] = useState(props.description);
+function EditBook({ book }) {
+  console.log(book);
+  const [title, setTitle] = useState(book.title);
+  const [author, setAuthor] = useState(book.author);
+  const [genre, setGenre] = useState(book.genre);
+  const [published, setPublished] = useState(book.published);
+  const [description, setDescription] = useState(book.description);
   return (
     <Fragment>
       <button
         type="button"
         className="btn btn-warning mr-5"
         data-toggle="modal"
-        data-target={`#id${props.props_id}`}
+        data-target={`#id${book.library_id}`}
       >
         Edit
       </button>
 
-      <div className="modal" id={`id${props.props_id}`}>
+      <div className="modal" id={`id${book.library_id}`}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
