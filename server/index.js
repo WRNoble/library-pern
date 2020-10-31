@@ -93,7 +93,7 @@ app.put("/update/:title", async (req, res) => {
     const { published } = req.body;
     const { description } = req.body;
     const updateBook = await pool.query(
-      "UPDATE library SET library_value (title, author, genre, published, description) VALUES($1, $2, $3, $4, $5) RETURNING *",
+      "UPDATE library SET title = $1, author = $2, genre = $3, published = $4, description = $5 WHERE title = title",
       [title, author, genre, published, description]
     );
 

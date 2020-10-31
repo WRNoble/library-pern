@@ -25,6 +25,20 @@ function EditBook({ book }) {
       console.error(err.message);
     }
   };
+
+  const deleteBook = async (e) => {
+    e.preventDefault();
+    try {
+      const body = { title, author, genre, published, description };
+      const response = await fetch(`http://localhost:5000/book/${book.title}`, {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
   return (
     <Fragment>
       <button
@@ -112,6 +126,7 @@ function EditBook({ book }) {
                 type="button"
                 className="btn btn-danger"
                 data-dismiss="modal"
+                onClick={(e) => deleteBook(e)}
               >
                 Delete
               </button>
