@@ -20,6 +20,8 @@ function EditBook({ book }) {
           body: JSON.stringify(body),
         }
       );
+
+      window.location = "/";
       console.log(response);
     } catch (err) {
       console.error(err.message);
@@ -35,6 +37,8 @@ function EditBook({ book }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
+
+      window.location = "/";
     } catch (err) {
       console.log(err.message);
     }
