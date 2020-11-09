@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 
-function AddBookForm(props) {
+function AddBookForm() {
   const [title, setTitle] = useState("Title");
   const [author, setAuthor] = useState("Author");
   const [genre, setGenre] = useState("Genre");
@@ -9,7 +9,6 @@ function AddBookForm(props) {
 
   const onSubmitForm = async (e) => {
     e.preventDefault();
-
     try {
       const body = { title, author, genre, published, description };
 
@@ -24,6 +23,7 @@ function AddBookForm(props) {
       console.error(err.message);
     }
   };
+
   return (
     <Fragment>
       <h1 className="text-center mt-5">ADD BOOK</h1>

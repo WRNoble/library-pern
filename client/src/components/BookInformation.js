@@ -32,14 +32,6 @@ class BookInformation extends Component {
       );
   }
 
-  // handleDelete = (book) => {
-  //   this.setState((state) => {
-  //     return {
-  //       books: state.books.filter((books) => books.book !== book),
-  //     };
-  //   });
-  // };
-
   render() {
     const books = this.state.books;
     let error = this.state.error;
@@ -59,12 +51,6 @@ class BookInformation extends Component {
                 <p>{book.published}</p>
                 <p>{book.description}</p>
                 <EditBook book={book} />
-                <button
-                  className="btn btn-danger"
-                  // onClick={this.props.handleDelete.bind(this, item)}
-                >
-                  Delete
-                </button>
               </div>
             </Fragment>
           ))}
