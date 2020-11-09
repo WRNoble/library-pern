@@ -85,7 +85,7 @@ app.get("/genre/:genre", async (req, res) => {
 
 //update book
 
-app.put("/update/:title", async (req, res) => {
+app.put("/update/:library_id", async (req, res) => {
   try {
     const { title } = req.body;
     const { author } = req.body;
@@ -93,7 +93,7 @@ app.put("/update/:title", async (req, res) => {
     const { published } = req.body;
     const { description } = req.body;
     const updateBook = await pool.query(
-      "UPDATE library SET title = $1, author = $2, genre = $3, published = $4, description = $5 WHERE title = title",
+      "UPDATE library SET title = $1, author = $2, genre = $3, published = $4, description = $5 WHERE library_id = library_id",
       [title, author, genre, published, description]
     );
 
